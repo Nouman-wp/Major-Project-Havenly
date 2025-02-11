@@ -86,4 +86,54 @@ h3{
 }
 
 
+/* show.ejs */
 
+
+/* Container for centering */
+
+
+/* Details Card */
+.details-card {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    
+    padding: 30px;
+    text-align: center;
+}
+
+/* Listing Image */
+.listing-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border: 2px solid black;
+}
+
+/* Listing Info */
+.listing-info h4 {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.listing-info p {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Buttons */
+.btn-danger, .btn-dark {
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background: red;
+}
+
+.btn-dark:hover {
+    background: black;
+    color: white;
+}
