@@ -1,0 +1,85 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Havenly</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom Styles */
+        .navbar {
+            background: azure;
+            padding: 10px 0;
+        }
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #000000;
+            letter-spacing: 2px;
+            font-family: 'Poppins', sans-serif;
+            
+        }
+        .navbar-brand:hover {
+            color: red; /* Golden hover effect */
+            transform: translateY(-2px);
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin: 0 15px;
+            transition: color 0.3s ease-in-out, transform 0.4s;
+        }
+        .nav-link:hover {
+            color: red; /* Golden hover effect */
+            transform: translateY(-2px);
+            font-weight: 800;
+        }
+        
+        .nav-link{
+            color: black;
+        }
+        #logo{
+            color: red;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg border-bottom sticky-top">
+        <div class="container">
+            <!-- Cool Logo -->
+            <a class="navbar-brand" href="/">
+                <i class="fa-solid fa-mountain-sun" id="logo"></i> Havenly
+            </a>
+             <!-- Navbar Toggler -->
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" >
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/listings">Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/listings/new">Create New Listing</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+

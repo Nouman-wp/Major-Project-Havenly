@@ -1,0 +1,89 @@
+/* Ensure the full page height is used */
+html, body {
+    height: 100%;
+    
+    margin: 0;
+    
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Wrapper takes full height */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Main content expands to push the footer down */
+.content {
+    flex: 1;
+    margin-left: 30px;
+}
+
+/* Footer Styling */
+footer {
+    background: #f8f9fa;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+h3{
+    margin-left: 20px;
+}
+
+/* card */
+.listing-card {
+    border: 2px solid black; /* Black border */
+    border-radius: 12px; /* Smooth edges */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    overflow: hidden; /* Prevent content overflow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.listing-card:hover {
+    transform: translateY(-5px); /* Lifts the card */
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+}
+
+.card-img-top {
+    height: 200px; /* Uniform image size */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* form */
+.form-card {
+    width: 100%;
+    max-width: 900px; /* Keeps form compact */
+    border: 2px solid black; /* Bold black border */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    background: white;
+}
+
+.form-control {
+    border: 2px solid black; /* Black border for inputs */
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #000;
+    box-shadow: none;
+}
+
+.btn-dark {
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 10px;
+    transition: background 0.7s ease;
+}
+
+.btn-dark:hover {
+    background: red; /* Stylish hover effect */
+}
+
+
+

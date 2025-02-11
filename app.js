@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing");
 const path = require("path");
 const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/havenly";
 
@@ -15,9 +16,12 @@ main().then(()=>{
 
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+app.use(express.static(path.join(__dirname,"/public")));
 
 app.set("view engine" ,"ejs");
 app.set("views",path.join(__dirname,"views"));
+
+app.engine('ejs',ejsMate);
 
 async function main(){
     await mongoose.connect(MONGO_URL);

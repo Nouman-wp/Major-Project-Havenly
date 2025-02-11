@@ -1,37 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Havenly</title>
-  </head>
-  <body>
-    <h3>Create a New Listing</h3>
-    <form method="POST" action="/listings">
-      <input name="listing[title]" placeholder="enter title" type="text" />
-      <br /><br />
-      <textarea
-        name="listing[description]"
-        placeholder="enter description"
-      ></textarea>
-      <br /><br />
-      <input
-        name="listing[image]"
-        placeholder="enter image URL/Link"
-        type="text"
-      />
-      <br /><br />
-      <input name="listing[price]" placeholder="enter price" type="number" />
-      <br /><br />
-      <input name="listing[country]" placeholder="enter country" type="text" />
-      <br /><br />
-      <input
-        name="listing[location]"
-        placeholder="enter location"
-        type="text"
-      />
-      <br /><br />
-      <button>Add</button>
-    </form>
-  </body>
-</html>
+<% layout("/layouts/boilerplate") %>
+
+<body style="background-color: azure;">
+    <div class="container my-5 d-flex justify-content-center">
+        <div class="card form-card p-4" style="border: 2px solid black;">
+            <h3 class="text-center fw-bold mb-4">Create a New Listing</h3>
+            <form method="POST" action="/listings" >
+                <div class="mb-3" >
+                    <label class="form-label fw-semibold" >Title</label>
+                    <input name="listing[title]" class="form-control" placeholder="Enter title" type="text" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea name="listing[description]" class="form-control" placeholder="Enter description" rows="3" required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Image URL</label>
+                    <input name="listing[image]" class="form-control" placeholder="Enter image URL/Link" type="text" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Price</label>
+                    <input name="listing[price]" class="form-control" placeholder="Enter price" type="number" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Country</label>
+                    <input name="listing[country]" class="form-control" placeholder="Enter country" type="text" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Location</label>
+                    <input name="listing[location]" class="form-control" placeholder="Enter location" type="text" required />
+                </div>
+
+                <button class="btn btn-dark w-100">Add Listing</button>
+            </form>
+        </div>
+    </div>
+</body>

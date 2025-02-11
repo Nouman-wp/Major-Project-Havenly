@@ -1,36 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Havenly</title>
-  </head>
-  <body>
-    <h3>Edit your Listing</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
-      <input name="listing[title]" value="<%= listing.title %>" type="text" />
-      <br /><br />
-      <textarea name="listing[description]">
-<%= listing.description %></textarea
-      >
-      <br /><br />
-      <input name="listing[image]" value="<%= listing.image %>" type="text" />
-      <br /><br />
-      <input name="listing[price]" value="<%= listing.price %>" type="number" />
-      <br /><br />
-      <input
-        name="listing[country]"
-        value="<%= listing.country %>"
-        type="text"
-      />
-      <br /><br />
-      <input
-        name="listing[location]"
-        value="<%= listing.location %>"
-        type="text"
-      />
-      <br /><br />
-      <button>Edit</button>
-    </form>
-  </body>
-</html>
+<% layout("/layouts/boilerplate") %>
+
+<body style="background-color: azure;">
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="form-card p-5">
+            <h2 class="text-center fw-bold mb-4">Edit Your Listing</h2>
+            <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Title</label>
+                    <input name="listing[title]" value="<%= listing.title %>" class="form-control" type="text" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea name="listing[description]" class="form-control" rows="3" required><%= listing.description %></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Image URL</label>
+                    <input name="listing[image]" value="<%= listing.image %>" class="form-control" type="text" required />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Price</label>
+                        <input name="listing[price]" value="<%= listing.price %>" class="form-control" type="number" required />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Country</label>
+                        <input name="listing[country]" value="<%= listing.country %>" class="form-control" type="text" required />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Location</label>
+                    <input name="listing[location]" value="<%= listing.location %>" class="form-control" type="text" required />
+                </div>
+
+                <button class="btn btn-dark w-100">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</body>
