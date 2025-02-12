@@ -137,3 +137,163 @@ h3{
     background: black;
     color: white;
 }
+
+
+
+
+
+
+/* Review Section */
+.review-section {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    margin-top: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Title */
+.review-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Rating Container */
+.rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.rating-label {
+    font-weight: bold;
+}
+
+.rating-slider {
+    width: 150px;
+    accent-color: red;
+}
+
+#rating-value {
+    font-weight: bold;
+}
+
+/* Comment Box */
+.comment-container {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.comment-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comment-box {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: none;
+}
+
+/* Submit Button */
+.submit-review {
+    width: 100%;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+.submit-review:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+/* Review Comment */
+.review-comment {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* Review List Container */
+.review-list {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+/* Review Container - Makes a 2-column grid */
+.review-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px; /* Adds spacing between boxes */
+    max-width: 1300px; /* Adjust width */
+    margin: 20px auto; /* Centering */
+}
+
+/* Individual Review Box */
+.review-box {
+    border: 2px solid black;
+    border-radius: 10px;
+    max-width: 1000px;
+    padding: 15px;
+    background: white;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Review Header (Name + Rating) */
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* User Name */
+.review-user {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Rating */
+.review-rating {
+    font-size: 1rem;
+    color: #ff9800;
+}
+
+/* Review Message */
+.review-message {
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
+}
+

@@ -1,25 +1,78 @@
 <% layout("/layouts/boilerplate") %>
 
-<body>
-    <div class="container d-flex justify-content-center my-5">
-        <div class="details-card p-4">
-            <!-- Listing Image -->
-            <img src="<%= listing.image %>" alt="Listing Image" class="listing-img mb-3">
+    <body>
+        <div class="container d-flex justify-content-center my-5">
+            <div class="details-card p-4">
+                <!-- Listing Image -->
+                <img src="<%= listing.image %>" alt="Listing Image" class="listing-img mb-3">
 
-            <h2 class="fw-bold text-center">Listing Details</h2>
-            <div class="listing-info text-center mt-3">
-                <h4 class="fw-bold"><%= listing.title %></h4>
-                <p class="text-muted"><%= listing.description %></p>
-                <p class="fw-bold">&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
-                <p><%= listing.location %>, <%= listing.country %></p>
-            </div>
+                <h2 class="fw-bold text-center">
+                    <%= listing.title %>
+                </h2>
+                <div class="listing-info text-center mt-3">
 
-            <div class="d-flex justify-content-between mt-4">
-                <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger px-4">Edit</a>
-                <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-                    <button class="btn btn-dark px-4">Delete</button>
-                </form>
+                    <p class="text-muted">
+                        <%= listing.description %>
+                    </p>
+                    <p class="fw-bold">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                    </p>
+                    <p>
+                        <%= listing.location %>, <%= listing.country %>
+                    </p>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger px-4">Edit</a>
+                    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                        <button class="btn btn-dark px-4">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+
+        <hr>
+
+        <div class="review-section mx-auto">
+            <h4 class="review-title">Leave a Review</h4>
+            <form action="/listings/<%= listing.id%>/reviews" method="POST" class="">
+                <div class="rating-container">
+                    <label for="rating" class="rating-label">Rating:</label>
+                    <input type="range" name="review[rating]" id="rating" min="1" max="5" class="rating-slider">
+                    <span id="rating-value">3</span>
+                </div>
+                <div class="comment-container">
+                    <label for="comment" class="comment-label">Comments:</label>
+                    <textarea name="review[comment]" id="comment" class="comment-box"
+                        placeholder="Write your thoughts here..." required></textarea>
+                </div>
+                <button class="btn btn-primary submit-review">Submit Review</button>
+            </form>
+        </div>
+        <hr>
+
+        <center>
+            <h4 class="review-title">Reviews</h4>
+        </center>
+        <div class="review-container col-6">
+            <% for(let review of listing.reviews) { %>
+                <div class="review-box">
+                    <div class="review-header">
+                        <span class="review-user">John Doe</span>
+                        <span class="review-rating">⭐ <%= review.rating %>/5</span>
+                    </div>
+                    <p class="review-message">
+                        <%= review.comment %>
+                    </p>
+
+                    <form action="/listings/<%= listing._id %>/reviews/<%= review.id %>?_method=DELETE" class="mb-3" method="POST">
+                        <button class="btn btn-sm btn-dark">Delete</button>
+                    </form>
+                </div>
+
+
+                <% } %>
+        </div>
+
+
+
+    </body>
