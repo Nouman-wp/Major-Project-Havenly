@@ -5,11 +5,13 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
+const session = require("express-session");
   
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/havenly";
+
 
 main()
   .then(() => {
@@ -27,6 +29,15 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.engine("ejs", ejsMate);
+
+const sessionOptions = {
+  secret: "myrandomsecret",
+  resave: false,
+  saveUninitialized: true
+};
+
+app.use(session(sessionOptions));
+
 
 
 async function main() {
