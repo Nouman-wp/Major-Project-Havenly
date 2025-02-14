@@ -39,9 +39,8 @@
                 <%}%>
             </div>
         </div>
-
+<% if(currUser) { %>
         <hr>
-
         <div class="review-section mx-auto">
             <h4 class="review-title">Leave a Review</h4>
             <form action="/listings/<%= listing.id%>/reviews" method="POST" class="">
@@ -58,6 +57,8 @@
                 <button class="btn btn-primary submit-review">Submit Review</button>
             </form>
         </div>
+     <%} %>
+        
         <hr>
 
         <center>
@@ -67,7 +68,13 @@
             <% for(let review of listing.reviews) { %>
                 <div class="review-box">
                     <div class="review-header">
-                        <span class="review-user">John Doe</span>
+                        <div class="owner-info d-flex align-items-center fs-5 mb-3">
+                            <i class="fas fa-user-circle text-danger me-2" style="font-size: 1.2rem;"></i>
+                            <span class="fw-semibold text-dark" style="font-size: 15px;">
+                                <%= review.author.username %>
+                            </span>
+                        </div>
+                    
                         <span class="review-rating">⭐ <%= review.rating %>/5</span>
                     </div>
                     <p class="review-message">
