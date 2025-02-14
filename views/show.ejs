@@ -10,6 +10,12 @@
                     <%= listing.title %>
                 </h2>
                 <div class="listing-info text-center mt-3">
+                    <div class="owner-info d-flex align-items-center fs-5 mb-3">
+                        <i class="fas fa-user-circle text-danger me-2" style="font-size: 1.8rem;"></i>
+                        <span class="fw-semibold text-dark">
+                            <%= listing.owner.username %>
+                        </span>
+                    </div>
 
                     <p class="text-muted">
                         <%= listing.description %>

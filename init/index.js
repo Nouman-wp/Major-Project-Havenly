@@ -18,8 +18,12 @@ async function main() {
 
 const initDB = async () => {
   await Listing.deleteMany({});
+  initData.data = initData.data.map((obj) => ({
+    ...obj,
+    owner: "67af8371596034766d12f38b",
+  }));
   await Listing.insertMany(initData.data);
   console.log("Havenly data files has been Initialized");
 };
 
-initDB(); 
+initDB();
