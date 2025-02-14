@@ -1,0 +1,43 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow-lg" style="width: 400px;">
+            <h2 class="text-center mb-3">SignUp on Havenly !</h2>
+
+            <form action="/signup" method="POST">
+                <!-- Username -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm-password" name="confirmPassword" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            </form>
+
+            <!-- Login Link -->
+            <p class="text-center mt-3">
+                Already have an account? <a href="/login">Login</a>
+            </p>
+        </div>
+    </div>
+</body>
