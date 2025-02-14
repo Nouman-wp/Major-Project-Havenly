@@ -27,12 +27,16 @@
                     </p>
                 </div>
 
+                <!-- checking out user information -->
+
+                <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
                 <div class="d-flex justify-content-between mt-4">
                     <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger px-4">Edit</a>
                     <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
                         <button class="btn btn-dark px-4">Delete</button>
                     </form>
                 </div>
+                <%}%>
             </div>
         </div>
 
