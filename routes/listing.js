@@ -40,7 +40,7 @@ router.get("/", wrapAsync(async (req, res) => {
   }));
 
   //edit.ejs route
-  router.get("/:id/edit",validateListing, wrapAsync(async (req, res) => {
+  router.get("/:id/edit", wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
     res.render("edit.ejs", { listing });
@@ -48,11 +48,12 @@ router.get("/", wrapAsync(async (req, res) => {
   
   //Create Route
   router.post(
-    "/",validateListing,
+    "/",
     wrapAsync(async (req, res, next) => {
       const newListing = new Listing(req.body.listing);
       await newListing.save();
-      res.redirect("/");
+      req.flash("success", "Notification : New Listing Created !");
+      res.redirect("/listings");
     })
   );
   
