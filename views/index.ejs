@@ -1,29 +1,91 @@
 <% layout("/layouts/boilerplate") %>
 
-<body>
-    <div class="container my-5">
-        <h3 class="text-center fw-bold mb-4">Explore Places</h3>
+    <body>
+        <div class="container my-5">
+            <h3 class="text-center fw-bold mb-4" style="margin-top: -20px;">All Listings</h3>
+            <div class="filters d-flex justify-content-around align-items-center p-3 border rounded shadow-sm" style="margin-bottom: 20px;">
 
-        <% if (allListings.length === 0) { %>
-            <p class="text-center text-danger fs-5">No listings found. Try a different search.</p>
-        <% } else { %>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <% for (let listing of allListings) { %>
-                    <div class="col">
-                        <div class="card listing-card">
-                            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_img">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold">
-                                    <%= listing.title %>
-                                </h5>
-                                <h6 class="card-text text-muted"><%= listing.location %></h6>
-                                <h6 class="card-text text-muted">&#8377; <%= listing.price.toLocaleString("en-IN") %>/ Night</h6>
-                                <a href="/listings/<%= listing._id %>" class="btn btn-dark w-100">View Listing</a>
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-umbrella-beach filter-icon"></i>
+                    <p>Beachfront</p>
+                </a>
+            
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-home filter-icon"></i>
+                    <p>Cabins</p>
+                </a>
+            
+             
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-gem filter-icon"></i>
+                    <p>Luxury</p>
+                </a>
+            
+                
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-tractor filter-icon"></i>
+                    <p>Farms</p>
+                </a>
+            
+        
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-mountain filter-icon"></i>
+                    <p>Mountains</p>
+                </a>
+        
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-city filter-icon"></i>
+                    <p>City Life</p>
+                </a>
+            
+        
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-swimming-pool filter-icon"></i>
+                    <p>Pools</p>
+                </a>
+            
+             
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-campground filter-icon"></i>
+                    <p>Camping</p>
+                </a>
+            
+
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-hotdog filter-icon"></i>
+                    <p>Desert</p>
+                </a>
+      
+                <a href="#" class="filter-item text-center">
+                    <i class="fas fa-skiing filter-icon"></i>
+                    <p>Ski Resorts</p>
+                </a>
+            </div>
+            
+            
+
+            
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <% for(let listing of allListings) { %>
+                        
+                        <div class="col">
+                            <div class="card listing-card">
+                                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_img">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold">
+                                        <%= listing.title %>
+                                    </h5>
+                                    <h6 class="card-text text-muted">&#8377; <%= listing.location %>
+                                    </h6>
+                                    <h6 class="card-text text-muted">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                            / Night</h6>
+                                    <a href="/listings/<%= listing._id %>" class="btn btn-dark w-100">View Listing</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <% } %>
-            </div>
-        <% } %>
-    </div>
-</body>
+                        <% } %>
+                </div>
+            
+        </div>
+    </body>

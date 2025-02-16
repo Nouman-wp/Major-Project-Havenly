@@ -1,53 +1,57 @@
 <% layout("/layouts/boilerplate") %>
 
-<body>
-    <div class="container d-flex justify-content-center my-5">
-        <div class="details-card p-4">
-            <!-- Listing Image -->
-            <img src="<%= listing.image.url %>" alt="Listing Image" class="listing-img mb-3">
+    <body>
+        <div class="container d-flex justify-content-center my-5">
+            <div class="details-card p-4">
+                <!-- Listing Image -->
+                <img src="<%= listing.image.url %>" alt="Listing Image" class="listing-img mb-3">
 
-            <h2 class="fw-bold text-center">
-                <%= listing.title %>
-            </h2>
-            <div class="listing-info text-center mt-3">
-                <div class="owner-info d-flex align-items-center fs-5 mb-3">
-                    <i class="fas fa-user-circle text-danger me-2" style="font-size: 1.8rem;"></i>
-                    <span class="fw-semibold text-dark">
-                        <%= listing.owner.username %>
-                    </span>
+                <h2 class="fw-bold text-center">
+                    <%= listing.title %>
+                </h2>
+                <div class="listing-info text-center mt-3">
+                    <div class="owner-info d-flex align-items-center fs-5 mb-3">
+                        <i class="fas fa-user-circle text-danger me-2" style="font-size: 1.8rem;"></i>
+                        <span class="fw-semibold text-dark">
+                            <%= listing.owner.username %>
+                        </span>
+                    </div>
+
+                    <p class="text-muted">
+                        <%= listing.description %>
+                    </p>
+                    <p class="fw-bold">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+                    </p>
+                    <p>
+                        <%= listing.location %>, <%= listing.country %>
+                    </p>
                 </div>
 
-                <p class="text-muted">
-                    <%= listing.description %>
-                </p>
-                <p class="fw-bold">&#8377; <%= listing.price.toLocaleString("en-IN") %>
-                </p>
-                <p>
-                    <%= listing.location %>, <%= listing.country %>
-                </p>
-            </div>
+                <!-- checking out user information -->
 
-            <!-- Map Container -->
-            <div id="map" style="height: 300px; width: 100%;"></div>
-
-            <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
-            <div class="d-flex justify-content-between mt-4">
-                <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger px-4">Edit</a>
-                <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-                    <button class="btn btn-dark px-4">Delete</button>
-                </form>
+                <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="/listings/<%= listing._id %>/edit" class="btn btn-danger px-4">Edit</a>
+                    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                        <button class="btn btn-dark px-4">Delete</button>
+                    </form>
+                </div>
+                <%}%>
             </div>
-            <%}%>
         </div>
-    </div>
+<% if(currUser) { %>
+        <hr>
+        <div class="review-section mx-auto">
+            <h4 class="review-title">Leave a Review</h4>
+            <form action="/listings/<%= listing.id%>/reviews" method="POST" class="">
+                <!-- <div class="rating-container">
+                    <label for="rating" class="rating-label">Rating:</label>
+                    <input type="range" name="c" id="rating" min="1" max="5" class="rating-slider">
+                    <span id="rating-value">3</span>
+                </div> -->
 
-    <% if(currUser) { %>
-    <hr>
-    <div class="review-section mx-auto">
-        <h4 class="review-title">Leave a Review</h4>
-        <form action="/listings/<%= listing.id%>/reviews" method="POST">
-            <center>
-                <fieldset class="starability-coinFlip">
+                <center><fieldset class="starability-coinFlip">
+                    <!-- <legend>First rating:</legend> -->
                     <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
                     <input type="radio" id="first-rate1" name="review[rating]" value="1" />
                     <label for="first-rate1" title="Terrible">1 star</label>
@@ -59,101 +63,54 @@
                     <label for="first-rate4" title="Very good">4 stars</label>
                     <input type="radio" id="first-rate5" name="review[rating]" value="5" />
                     <label for="first-rate5" title="Amazing">5 stars</label>
-                </fieldset>
-            </center>
+                  </fieldset>
+                </center>
 
-            <div class="comment-container">
-                <label for="comment" class="comment-label">Comments:</label>
-                <textarea name="review[comment]" id="comment" class="comment-box"
-                    placeholder="Write your thoughts here..." required></textarea>
-            </div>
-            <button class="btn btn-primary submit-review">Submit Review</button>
-        </form>
-    </div>
-    <%} %>
 
-    <hr>
-
-    <center>
-        <h4 class="review-title">Reviews</h4>
-    </center>
-    <div class="review-container col-6">
-        <% for(let review of listing.reviews) { %>
-            <div class="review-box">
-                <div class="review-header">
-                    <div class="owner-info d-flex align-items-center fs-5 mb-3">
-                        <i class="fas fa-user-circle text-danger me-2" style="font-size: 1.2rem;"></i>
-                        <span class="fw-semibold text-dark" style="font-size: 15px;">
-                            <%= review.author.username %>
-                        </span>
-                    </div>
-
-                    <p class="starability-result" data-rating="<%= review.rating %>"></p>
+                <div class="comment-container">
+                    <label for="comment" class="comment-label">Comments:</label>
+                    <textarea name="review[comment]" id="comment" class="comment-box"
+                        placeholder="Write your thoughts here..." required></textarea>
                 </div>
-                <p class="review-message">
-                    <%= review.comment %>
-                </p>
+                <button class="btn btn-primary submit-review">Submit Review</button>
+            </form>
+        </div>
+     <%} %>
+        
+        <hr>
 
-                <form action="/listings/<%= listing._id %>/reviews/<%= review.id %>?_method=DELETE" class="mb-3" method="POST">
-                    <button class="btn btn-sm btn-dark">Delete</button>
-                </form>
-            </div>
-        <% } %>
-    </div>
+        <center>
+            <h4 class="review-title">Reviews</h4>
+        </center>
+        <div class="review-container col-6">
+            <% for(let review of listing.reviews) { %>
+                <div class="review-box">
+                    <div class="review-header">
+                        <div class="owner-info d-flex align-items-center fs-5 mb-3">
+                            <i class="fas fa-user-circle text-danger me-2" style="font-size: 1.2rem;"></i>
+                            <span class="fw-semibold text-dark" style="font-size: 15px;">
+                                <%= review.author.username %>
+                            </span>
+                        </div>
+                    
 
-    <!-- OpenLayers & Map Script -->
-    <script src="https://unpkg.com/ol@latest/dist/ol.js"></script>
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const locationQuery = "<%= listing.location %>";
+                        <p class="starability-result" data-rating="<%= review.rating %>">
+               
+                          </p>
+                    </div>
+                    <p class="review-message">
+                        <%= review.comment %>
+                    </p>
 
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${locationQuery}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.length > 0) {
-                const lat = parseFloat(data[0].lat);
-                const lon = parseFloat(data[0].lon);
-                const map = new ol.Map({
-                    target: 'map',
-                    layers: [
-                        new ol.layer.Tile({
-                            source: new ol.source.OSM({
-                                attributions: [] 
-                            })
-                        })
-                    ],
-                    view: new ol.View({
-                        center: ol.proj.fromLonLat([lon, lat]),
-                        zoom: 12
-                    }),
-                    controls: []
-                });
-                const marker = new ol.Feature({
-                    geometry: new ol.geom.Point(ol.proj.fromLonLat([lon, lat]))
-                });
+                    <form action="/listings/<%= listing._id %>/reviews/<%= review.id %>?_method=DELETE" class="mb-3" method="POST">
+                        <button class="btn btn-sm btn-dark">Delete</button>
+                    </form>
+                </div>
 
-                marker.setStyle(new ol.style.Style({
-                    image: new ol.style.Circle({
-                        radius: 8, 
-                        // fill: new ol.style.Fill({ color: 'red' }), 
-                        stroke: new ol.style.Stroke({ color: 'red', width: 2 }) // Black outline
-                    })
-                }));
-                const vectorSource = new ol.source.Vector({
-                    features: [marker]
-                });
-                const markerLayer = new ol.layer.Vector({
-                    source: vectorSource
-                });
-                map.addLayer(markerLayer);
-            } else {
-                console.error("Location not found");
-            }
-        })
-        .catch(error => console.error("Error fetching location data:", error));
-});
+
+                <% } %>
+        </div>
 
 
 
-    </script>
-</body>
+    </body>

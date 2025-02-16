@@ -1,4 +1,3 @@
-/* Ensure the full page height is used */
 html, body {
     height: 100%;
     
@@ -9,20 +8,17 @@ html, body {
     flex-direction: column;
 }
 
-/* Wrapper takes full height */
 .wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Main content expands to push the footer down */
 .content {
     flex: 1;
     margin-left: 30px;
 }
 
-/* Footer Styling */
 footer {
     background: #f8f9fa;
     text-align: center;
@@ -33,37 +29,35 @@ h3{
     margin-left: 20px;
 }
 
-/* card */
 .listing-card {
-    border: 2px solid black; /* Black border */
-    border-radius: 12px; /* Smooth edges */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    overflow: hidden; /* Prevent content overflow */
+    border: 2px solid black; 
+    border-radius: 12px; 
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); 
+    overflow: hidden; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .listing-card:hover {
-    transform: translateY(-5px); /* Lifts the card */
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+    transform: translateY(-5px); 
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3); 
 }
 
 .card-img-top {
-    height: 200px; /* Uniform image size */
-    object-fit: cover; /* Maintain aspect ratio */
+    height: 200px; 
+    object-fit: cover; 
 }
 
-/* form */
 .form-card {
     width: 100%;
-    max-width: 900px; /* Keeps form compact */
-    border: 2px solid black; /* Bold black border */
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    max-width: 900px; 
+    border: 2px solid black; 
+    border-radius: 12px; 
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); 
     background: white;
 }
 
 .form-control {
-    border: 2px solid black; /* Black border for inputs */
+    border: 2px solid black; 
     border-radius: 8px;
     padding: 10px;
     transition: all 0.3s ease;
@@ -82,27 +76,18 @@ h3{
 }
 
 .btn-dark:hover {
-    background: red; /* Stylish hover effect */
+    background: red; 
 }
 
-
-/* show.ejs */
-
-
-/* Container for centering */
-
-
-/* Details Card */
 .details-card {
     width: 100%;
     max-width: 600px;
     background: white;
-    
     padding: 30px;
     text-align: center;
 }
 
-/* Listing Image */
+
 .listing-img {
     width: 100%;
     height: 300px;
@@ -110,7 +95,7 @@ h3{
     border: 2px solid black;
 }
 
-/* Listing Info */
+
 .listing-info h4 {
     margin-bottom: 5px;
     text-align: left;
@@ -122,7 +107,7 @@ h3{
     text-align: left;
 }
 
-/* Buttons */
+
 .btn-danger, .btn-dark {
     font-weight: bold;
     padding: 10px 20px;
@@ -139,11 +124,6 @@ h3{
 }
 
 
-
-
-
-
-/* Review Section */
 .review-section {
     width: 100%;
     max-width: 800px;
@@ -155,14 +135,14 @@ h3{
     text-align: center;
 }
 
-/* Title */
+
 .review-title {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 15px;
 }
 
-/* Rating Container */
+
 .rating-container {
     display: flex;
     align-items: center;
@@ -184,7 +164,7 @@ h3{
     font-weight: bold;
 }
 
-/* Comment Box */
+
 .comment-container {
     margin-bottom: 15px;
     text-align: left;
@@ -221,19 +201,12 @@ h3{
     background-color: #0056b3;
 }
 
-
-
-
-
-
-/* Review Comment */
 .review-comment {
     font-size: 1rem;
     color: #333;
     line-height: 1.4;
 }
 
-/* Review List Container */
 .review-list {
     width: 100%;
     max-width: 600px;
@@ -243,23 +216,14 @@ h3{
     align-items: center;
 }
 
-
-
-
-
-
-
-
-/* Review Container - Makes a 2-column grid */
 .review-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 20px; /* Adds spacing between boxes */
-    max-width: 1300px; /* Adjust width */
-    margin: 20px auto; /* Centering */
+    gap: 20px; 
+    max-width: 1300px; 
+    margin: 20px auto; 
 }
 
-/* Individual Review Box */
 .review-box {
     border: 2px solid black;
     border-radius: 10px;
@@ -269,7 +233,6 @@ h3{
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Review Header (Name + Rating) */
 .review-header {
     display: flex;
     justify-content: space-between;
@@ -278,25 +241,21 @@ h3{
     margin-bottom: 5px;
 }
 
-/* User Name */
 .review-user {
     font-size: 1rem;
     color: #333;
 }
 
-/* Rating */
 .review-rating {
     font-size: 1rem;
     color: #ff9800;
 }
 
-/* Review Message */
 .review-message {
     font-size: 1rem;
     color: #555;
     text-align: left;
 }
-
 
 #map {
     width: 100%;
@@ -314,7 +273,7 @@ h3{
     padding: 5px 10px;
     background: white;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-   
+    
 }
 
 .search-bar input {
@@ -336,4 +295,35 @@ h3{
 
 .search-bar button:hover {
     background: darkred;
+}
+
+
+.filters {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.filter-item {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.filter-icon {
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.filter-item:hover {
+    color: #d9534f;
+    transform: scale(1.1);
 }
