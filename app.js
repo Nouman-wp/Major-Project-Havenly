@@ -56,9 +56,6 @@ async function main() {
 }
 
 
-app.get("/", (req, res) => {
-  res.send("Root Website");
-}); 
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -79,6 +76,11 @@ app.use((req,res,next)=>{
   next();
 });
 
+app.get("/", (req, res) => {
+  res.render("home", { currUser: req.user });  
+});
+
+
 // important line for /routes/listing.js & review.js
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
@@ -96,6 +98,15 @@ app.use((err, req, res, next) => {
   // res.status(statusCode).send(message);
   res.status(statusCode).render("error.ejs", {message});
 });
+
+
+const listingsRoutes = require("./routes/listing.js");
+app.use("/listings", listingsRoutes);
+
+
+
+
+
 
 app.listen(8080, () => {
   console.log("server is running on port 8080");

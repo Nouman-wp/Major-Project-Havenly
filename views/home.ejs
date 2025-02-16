@@ -1,0 +1,123 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="home-container">
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to Havenly</h1>
+            <p>Discover and book unique places to stay around the world.</p>
+ 
+            <form action="/listings/search" method="GET" class="search-bar">
+                <input type="text" name="query" placeholder="Search for listings...">
+                <button type="submit">Search</button>
+            </form>
+         
+            
+            <br><br>
+            <a href="/listings" class="btn btn-dark">Explore Listings</a>
+        </div>
+    </div>
+
+<style>
+/* Home Page Styling */
+.home-container {
+    text-align: center;
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: url('https://hips.hearstapps.com/hmg-prod/images/hotels-with-views-3-658d2205a670f.jpg') no-repeat center center;
+background-size: cover;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn-dark {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff1e1e, #d90000); /* More reddish gradient */
+    color: white;
+    text-decoration: none;
+    box-shadow: 0px 4px 10px rgba(217, 0, 0, 0.6);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect */
+.btn-dark:hover {
+    background: linear-gradient(45deg, #d90000, #ff1e1e);
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(217, 0, 0, 0.8);
+}
+
+/* Add ripple effect */
+.btn-dark::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.5s ease, height 0.5s ease, opacity 0.4s ease;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.btn-dark:active::before {
+    width: 0%;
+    height: 0%;
+    opacity: 1;
+}
+
+/* Optional animation */
+@keyframes pulse {
+    0% { box-shadow: 0px 4px 10px rgba(217, 0, 0, 0.6); }
+    50% { box-shadow: 0px 8px 20px rgba(217, 0, 0, 0.8); }
+    100% { box-shadow: 0px 4px 10px rgba(217, 0, 0, 0.6); }
+}
+
+.btn-dark:hover {
+    animation: pulse 1s infinite;
+}
+
+
+
+</style>

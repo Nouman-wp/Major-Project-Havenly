@@ -306,3 +306,34 @@ h3{
     margin: 10px auto;
 }
 
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 50px;
+    padding: 5px 10px;
+    background: white;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+   
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 8px 15px;
+    border-radius: 50px;
+    flex-grow: 1;
+}
+
+.search-bar button {
+    border-radius: 50px;
+    padding: 8px 15px;
+    background: red;
+    color: white;
+    border: none;
+    transition: 0.3s ease-in-out;
+}
+
+.search-bar button:hover {
+    background: darkred;
+}

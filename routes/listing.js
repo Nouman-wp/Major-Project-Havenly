@@ -17,6 +17,22 @@ router.route("/")
 //New Route controlled
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+// Search Route - MUST BE ABOVE `/:id` ROUTE
+router.get("/search", wrapAsync(async (req, res) => {
+    const query = req.query.query;
+    
+    if (!query) {
+        return res.redirect("/listings"); // Redirect if no query is entered
+    }
+
+    const results = await Listing.find({
+        title: { $regex: query, $options: "i" }, // Case-insensitive search
+    });
+
+    res.render("index.ejs", { allListings: results });
+}));
+
+
 
 // update , delete and show route controlled
 router.route("/:id")
@@ -27,5 +43,9 @@ router.route("/:id")
 
 //edit.ejs route
 router.get("/:id/edit",isLoggedIn,isOwner,wrapAsync(listingController.renderEditForm));
+
+
+
+
 
 module.exports = router;

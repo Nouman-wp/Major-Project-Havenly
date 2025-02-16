@@ -92,6 +92,21 @@
             <a class="navbar-brand" href="/">
                 <i class="fa-solid fa-mountain-sun" id="logo"></i> Havenly
             </a>
+<!-- search -->
+<form action="/listings/search" method="GET" class="d-flex search-bar" style="gap: 8px;">
+    <input 
+        type="text" 
+        name="query" 
+        class="form-control me-2" 
+        placeholder="Search destinations"
+        aria-label="Search"
+        required
+    >
+    <button type="submit" class="btn btn-danger"><i class="fas fa-search"></i></button>
+</form>
+
+
+      
 
             <!-- Navbar Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -105,7 +120,7 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/listings">Listings</a>
+                        <a class="nav-link" href="/listings">Explore</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/listings/new">Create Listing</a>
