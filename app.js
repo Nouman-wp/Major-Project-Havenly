@@ -9,6 +9,8 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
+
 // Authentication and user password things 
 const flash = require("connect-flash");
 const passport = require("passport");
@@ -19,7 +21,11 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/havenly";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/havenly";
+const dbURL = process.env.ATLASDB_URL;
+async function main() {
+  await mongoose.connect(dbURL);
+}
 
 
 main()
@@ -39,7 +45,11 @@ app.set("views", path.join(__dirname, "views"));
 
 app.engine("ejs", ejsMate);
 
+// HOsting it
+const store = MongoStore.create({mongoUrl:dbURL,crypto:{secret:"myrandomsecret"},touchAfter: 24*3600,});
+
 const sessionOptions = {
+  store,
   secret: "myrandomsecret",
   resave: false,
   saveUninitialized: true,
@@ -50,11 +60,9 @@ const sessionOptions = {
   },
 };
 
-
-async function main() {
-  await mongoose.connect(MONGO_URL);
-}
-
+store.on("error",()=>{
+  console.log("ERROR IN MONGO STORE",err);
+});
 
 
 app.use(session(sessionOptions));
