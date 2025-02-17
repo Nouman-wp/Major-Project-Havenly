@@ -108,7 +108,7 @@
                     <p class="review-message">
                         <%= review.comment %>
                     </p>
-<% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+<% if(currUser && currUser._id.equals(review.author._id)) { %>
                     <form action="/listings/<%= listing._id %>/reviews/<%= review.id %>?_method=DELETE" class="mb-3" method="POST">
                         <button class="btn btn-sm btn-dark">Delete</button>
                     </form>
