@@ -46,11 +46,11 @@ app.set("views", path.join(__dirname, "views"));
 app.engine("ejs", ejsMate);
 
 // HOsting it
-const store = MongoStore.create({mongoUrl:dbURL,crypto:{secret:"myrandomsecret"},touchAfter: 24*3600,});
+const store = MongoStore.create({mongoUrl:dbURL,crypto:{secret: process.env.SECRET},touchAfter: 24*3600,});
 
 const sessionOptions = {
   store,
-  secret: "myrandomsecret",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
